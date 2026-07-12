@@ -11,6 +11,8 @@ timestamp: 2026-06-20T14:46:50Z
 
 ## 2026-07-12
 
+- Deployed `main` at `7567d06` to Firebase (docs, admin, functions), `scanveil-web` (revision 00062), and `scanveil-worker` (generation 38); details in `knowledge/work/2026-07-12-full-deploy-7567d06.md`.
+- Fixed the scheduled-scan settings 403 by granting the console runtime `roles/iam.serviceAccountUser` on the scheduler service account (Terraform codification in PR #88).
 - Added the judge-facing system architecture diagram (`knowledge/architecture/scanveil-architecture-judges.drawio`) and the demo video slide deck (`knowledge/slides/scanveil-demo-slides.html`) to the repository.
 - Reworded presentation materials: "embeddings" is now 「ベクトル化」 for a Japanese audience, and the AI review is described as an Antigravity SDK agent with Gemini as the default model instead of "Gemini (Antigravity SDK)", since the SDK itself is multi-model.
 

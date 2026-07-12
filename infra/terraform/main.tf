@@ -750,6 +750,17 @@ resource "google_project_iam_member" "web_scheduler_manager" {
   member  = "serviceAccount:${google_service_account.web_runtime.email}"
 }
 
+# Why not only cloudscheduler.jobs.update: updating a job whose http_target
+# authenticates with the scheduler service account also requires actAs on
+# that account, even when the update mask touches only schedule/timeZone.
+resource "google_service_account_iam_member" "web_scheduler_act_as" {
+  count = local.is_scheduled_scan_enabled ? 1 : 0
+
+  service_account_id = google_service_account.scheduler[0].name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:${google_service_account.web_runtime.email}"
+}
+
 resource "google_project_iam_member" "worker_firestore" {
   count = var.enable_worker ? 1 : 0
 
