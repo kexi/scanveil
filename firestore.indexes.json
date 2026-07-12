@@ -1,0 +1,29 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "scanStreamChunks",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "deliveryId", "order": "ASCENDING" },
+        { "fieldPath": "sequence", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "fixPrStreamChunks",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "fixId", "order": "ASCENDING" },
+        { "fieldPath": "sequence", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "scanFindings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "repoFullName", "order": "ASCENDING" },
+        { "fieldPath": "embeddingVector", "vectorConfig": { "dimension": 768, "flat": {} } }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

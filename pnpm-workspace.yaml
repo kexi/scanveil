@@ -1,0 +1,56 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+minimumReleaseAge: 1440
+minimumReleaseAgeStrict: true
+minimumReleaseAgeIgnoreMissingTime: false
+trustLockfile: false
+blockExoticSubdeps: true
+
+catalog:
+  "@google-cloud/firestore": "7.11.6"
+  "@google/genai": "2.8.0"
+  "@emotion/react": "11.14.0"
+  "@emotion/styled": "11.14.1"
+  "@mui/icons-material": "9.1.1"
+  "@mui/material": "9.1.1"
+  "@mui/x-charts": "9.6.0"
+  "@tanstack/react-query": "5.101.0"
+  "@vitejs/plugin-react": "6.0.2"
+  "@monaco-editor/react": "4.7.0"
+  "firebase-admin": "13.10.0"
+  "firebase-functions": "7.2.5"
+  "firebase": "12.15.0"
+  "firebase-tools": "15.22.0"
+  "monaco-editor": "0.55.1"
+  "monaco-yaml": "5.5.1"
+  "react": "19.2.7"
+  "react-dom": "19.2.7"
+  "yaml": "2.9.0"
+  "typescript": "6.0.3"
+  "tsdown": "0.22.3"
+  "vitest": "4.1.9"
+  "vite": "8.0.16"
+  "zod": "4.4.3"
+  "@types/node": "24.13.2"
+  "@types/react": "19.2.17"
+  "@types/react-dom": "19.2.3"
+  "@playwright/test": "1.61.0"
+  "tsx": "4.22.4"
+
+overrides:
+  "@opentelemetry/core": "2.8.0"
+  dompurify: "3.4.11"
+  esbuild: "0.28.1"
+  uuid: "11.1.1"
+  yaml: "2.9.0"
+
+allowBuilds:
+  "@firebase/util": false
+  "@google/genai": false
+  core-js-pure: false
+  esbuild: true
+  protobufjs: false
+  re2: false
+  sharp: true

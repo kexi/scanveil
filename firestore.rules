@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Server-side Cloud Run services use IAM, not client SDK rules.
+    // Keep all direct client access closed until an explicit user-facing
+    // Firestore client surface is designed.
+    match /scanRuns/{scanRunId} {
+      allow read, write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

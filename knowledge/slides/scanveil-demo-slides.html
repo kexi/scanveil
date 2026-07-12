@@ -1,0 +1,340 @@
+<title>Scanveil — 機能紹介（デモ動画用）</title>
+<style>
+  :root {
+    --ink: #0b1220;
+    --panel: #131c2e;
+    --line: #24324d;
+    --text: #e8edf7;
+    --muted: #8a98b4;
+    --blue: #4c8df6;
+    --amber: #f9ab00;
+    --mono: "SF Mono", "Menlo", "Consolas", monospace;
+    --sans: "Avenir Next", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--text);
+    font-family: var(--sans);
+    overflow: hidden;
+  }
+  #stage {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #deck {
+    width: 1280px;
+    height: 720px;
+    position: relative;
+    transform-origin: center center;
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    padding: 84px 100px;
+    box-sizing: border-box;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slide.active {
+    display: flex;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 17px;
+    letter-spacing: 0.1em;
+    color: var(--amber);
+    margin-bottom: 24px;
+  }
+  .eyebrow::before {
+    content: "▸ ";
+    color: var(--blue);
+  }
+  h1 {
+    font-size: 88px;
+    line-height: 1.12;
+    margin: 0 0 14px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  h2 {
+    font-size: 52px;
+    line-height: 1.2;
+    margin: 0 0 36px;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+  ul.points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 32px;
+    line-height: 1.5;
+  }
+  ul.points li {
+    padding-left: 38px;
+    position: relative;
+  }
+  ul.points li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 19px;
+    width: 16px;
+    height: 4px;
+    background: var(--blue);
+  }
+  ul.points li strong {
+    color: var(--amber);
+    font-weight: 700;
+  }
+  .muted {
+    color: var(--muted);
+  }
+  code {
+    font-family: var(--mono);
+    font-size: 0.82em;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 2px 10px;
+  }
+  .titleSlide {
+    position: relative;
+    overflow: hidden;
+  }
+  .titleSlide .product {
+    font-family: var(--mono);
+    font-size: 22px;
+    color: var(--blue);
+    letter-spacing: 0.28em;
+    margin-bottom: 26px;
+  }
+  .titleSlide .tagline {
+    font-size: 32px;
+    color: var(--muted);
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+  .scanline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--amber) 30%,
+      var(--amber) 70%,
+      transparent
+    );
+    opacity: 0.7;
+    animation: sweep 5s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes sweep {
+    0% {
+      top: 0;
+      opacity: 0;
+    }
+    8% {
+      opacity: 0.7;
+    }
+    92% {
+      opacity: 0.7;
+    }
+    100% {
+      top: 100%;
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scanline {
+      animation: none;
+      top: 38%;
+    }
+  }
+  .bigflow {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+  .bigflow .step {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px 30px;
+    text-align: center;
+    flex: 1;
+    line-height: 1.4;
+  }
+  .bigflow .step small {
+    display: block;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .bigflow .arrow {
+    color: var(--blue);
+    font-size: 36px;
+  }
+  .bigflow .step.hot {
+    border-color: var(--amber);
+    background: rgba(249, 171, 0, 0.08);
+  }
+  .footerNote {
+    position: absolute;
+    bottom: 56px;
+    left: 100px;
+    right: 100px;
+    font-family: var(--mono);
+    font-size: 17px;
+    color: var(--muted);
+  }
+  #hud {
+    position: fixed;
+    right: 20px;
+    bottom: 14px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    z-index: 10;
+    user-select: none;
+  }
+</style>
+
+<div id="stage">
+  <div id="deck">
+    <section class="slide titleSlide active">
+      <div class="scanline"></div>
+      <div class="product">SCANVEIL</div>
+      <h1>見張って、直す。</h1>
+      <p class="tagline">
+        GitHub リポジトリを AI エージェントと OSV がスキャンし、<br />修正 PR
+        まで届けるセキュリティスキャナー
+      </p>
+      <p class="footerNote">Kei Nakayama — built on Google Cloud</p>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">problem</div>
+      <h2>LLM スキャナーは、そのままでは運用に乗らない</h2>
+      <ul class="points">
+        <li>ルールベースでは<strong>組織独自のルール違反</strong>を検出できない</li>
+        <li>LLM は同じ問題を毎回<strong>違う表現</strong>で報告 → 重複だらけで追跡不能</li>
+        <li>検出しても、<strong>Issue 化・修正</strong>は結局人手</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">how it works</div>
+      <h2>検出 → 追跡 → 修正のループを閉じる</h2>
+      <div class="bigflow">
+        <div class="step">
+          スキャン<small>OSV + AI エージェント<br />(Antigravity SDK・Gemini 等)</small>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step hot">
+          SVE-ID 採番<small>RAG で重複抑止<br />(Firestore Vector Search)</small>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          結果表示<small>PR 上に表示 (GitHub Checks)<br />定期スキャンにも対応</small>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          Fix PR<small>ワンクリック生成<br />resolved 自動判定</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">feature 01</div>
+      <h2>AI エージェントが組織のルールも見張る</h2>
+      <ul class="points">
+        <li>Antigravity SDK の AI エージェント（Gemini 等）が PR diff とリポジトリをレビュー</li>
+        <li>
+          組織の<strong>スキャンポリシー</strong>をプロンプトに注入<br /><span class="muted"
+            >例:「pnpm の minimumReleaseAge は 1440 以上必須」</span
+          >
+        </li>
+        <li>
+          汎用スキャンでは見つからない「<strong>うちのルール違反</strong>」も検出結果として報告
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">feature 02</div>
+      <h2>RAG で「同じ脆弱性」を同じ ID に</h2>
+      <ul class="points">
+        <li>検出結果をベクトル化 → <strong>Firestore Vector Search</strong> で過去と類似検索</li>
+        <li>表現が揺れても同じ <strong>SVE-ID</strong> に束ねて追跡</li>
+        <li>修正後に再報告されなければ <strong>resolved</strong> と自動判定</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">feature 03</div>
+      <h2>検出から修正まで、ワンクリック</h2>
+      <ul class="points">
+        <li>スキャン結果を <strong>PR 上に表示</strong>（GitHub Checks）</li>
+        <li>検出結果から <strong>Issue / 修正 PR を AI が生成</strong></li>
+      </ul>
+    </section>
+  </div>
+</div>
+<div id="hud">1 / 6</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const hud = document.getElementById("hud");
+  let index = 0;
+
+  function show(next) {
+    index = Math.max(0, Math.min(slides.length - 1, next));
+    slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+    hud.textContent = index + 1 + " / " + slides.length;
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (["ArrowRight", " ", "PageDown", "Enter"].includes(event.key)) {
+      event.preventDefault();
+      show(index + 1);
+    }
+    if (["ArrowLeft", "PageUp"].includes(event.key)) {
+      event.preventDefault();
+      show(index - 1);
+    }
+    if (event.key === "Home") show(0);
+    if (event.key === "End") show(slides.length - 1);
+  });
+  document.addEventListener("click", (event) => {
+    show(event.clientX < window.innerWidth / 3 ? index - 1 : index + 1);
+  });
+
+  function fit() {
+    const deck = document.getElementById("deck");
+    deck.style.transform =
+      "scale(" + Math.min(window.innerWidth / 1280, window.innerHeight / 720) + ")";
+  }
+  window.addEventListener("resize", fit);
+  fit();
+  show(0);
+</script>

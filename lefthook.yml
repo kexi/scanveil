@@ -1,0 +1,21 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      run: pnpm format:check
+    format-python:
+      run: bash -c 'if command -v ruff >/dev/null 2>&1; then ruff format apps/agy-runner; else nix develop -c ruff format apps/agy-runner; fi'
+    lint:
+      run: pnpm lint
+    secrets:
+      run: gitleaks detect --source .
+
+pre-push:
+  parallel: false
+  commands:
+    typecheck:
+      run: pnpm typecheck
+    test:
+      run: pnpm test
+    build:
+      run: pnpm build

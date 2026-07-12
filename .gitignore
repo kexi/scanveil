@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+dist-admin/
+.astro/
+.render/
+.turbo/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Local tooling state
+.direnv/
+.firebase/
+.terraform/
+.agents/
+skills-lock.json
+*.log
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.uv-cache/
+.uv-python/
+.pytest_cache/
+.mypy_cache/
+.venv/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+apps/functions/.secret.local
+
+# Terraform state
+terraform.tfstate
+terraform.tfstate.*
+*.tfplan
+
+# OS junk
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# Editor temp files (draw.io)
+.$*.dtmp
+.$*.bkp

@@ -1,0 +1,26 @@
+{
+  "name": "@scanveil/functions",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.mjs",
+  "scripts": {
+    "build": "tsdown",
+    "dev": "FIREBASE_CLI_DISABLE_UPDATE_CHECK=1 pnpm --workspace-root exec firebase emulators:start --config firebase.json --only functions,hosting --project kexi-380010",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "firebase-admin": "13.10.0",
+    "firebase-functions": "7.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.2",
+    "tsdown": "0.22.3",
+    "typescript": "6.0.3",
+    "vitest": "4.1.9"
+  },
+  "engines": {
+    "node": "22"
+  }
+}

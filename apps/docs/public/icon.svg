@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Scanveil icon</title>
+  <desc id="desc">A shield with a scanning line and verified check mark.</desc>
+  <path fill="#164c63" d="M32 5 53 13v16c0 14-8.4 25.5-21 30C19.4 54.5 11 43 11 29V13l21-8Z" />
+  <path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M22 39 29 45.5l14-18" />
+  <path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="4" d="M18 21h28" />
+  <path fill="#ffffff" d="M45 17h5v8h-5zM14 17h5v8h-5z" />
+</svg>

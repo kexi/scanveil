@@ -1,0 +1,32 @@
+{
+  "name": "@scanveil/docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm --filter @scanveil/core build && vite build && tsdown scripts/render-static.tsx --format esm --platform node --out-dir .render --clean && node .render/render-static.mjs && node scripts/prepare-admin-hosting.mjs",
+    "dev": "vite --host 0.0.0.0",
+    "preview": "vite preview",
+    "test": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
+    "@mui/icons-material": "catalog:",
+    "@mui/material": "catalog:",
+    "@scanveil/core": "workspace:*",
+    "firebase": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:"
+  }
+}

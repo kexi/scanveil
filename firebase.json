@@ -1,0 +1,73 @@
+{
+  "functions": {
+    "source": "apps/functions",
+    "runtime": "nodejs22",
+    "predeploy": ["corepack pnpm --filter @scanveil/functions build"]
+  },
+  "auth": {
+    "providers": {
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Scanveil",
+        "supportEmail": "kei.of.nakayama@gmail.com",
+        "authorizedRedirectUris": [
+          "https://www.scanveil.kexi.dev",
+          "https://admin.scanveil.kexi.dev",
+          "https://kexi-380010.web.app"
+        ]
+      }
+    }
+  },
+  "hosting": [
+    {
+      "site": "kexi-380010",
+      "public": "apps/docs/dist",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "cleanUrls": true,
+      "rewrites": [
+        {
+          "source": "/admin/api/**",
+          "function": {
+            "functionId": "adminApi",
+            "region": "us-central1"
+          }
+        }
+      ]
+    },
+    {
+      "site": "scanveil-admin",
+      "public": "apps/docs/dist-admin",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "cleanUrls": true,
+      "rewrites": [
+        {
+          "source": "/api/**",
+          "function": {
+            "functionId": "adminApi",
+            "region": "us-central1"
+          }
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ],
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "emulators": {
+    "functions": {
+      "port": 5003
+    },
+    "hosting": {
+      "port": 5002
+    },
+    "ui": {
+      "enabled": true,
+      "port": 4000
+    },
+    "singleProjectMode": true
+  }
+}

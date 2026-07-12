@@ -1,0 +1,43 @@
+{
+  "name": "@scanveil/console",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm build:client && pnpm build:server",
+    "build:client": "vite build",
+    "build:server": "tsdown",
+    "dev": "tsx src/server.ts",
+    "start": "node dist/server/server.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
+    "@monaco-editor/react": "catalog:",
+    "@mui/icons-material": "catalog:",
+    "@mui/material": "catalog:",
+    "@mui/x-charts": "catalog:",
+    "@scanveil/auth": "workspace:*",
+    "@scanveil/core": "workspace:*",
+    "@scanveil/github": "workspace:*",
+    "@tanstack/react-query": "catalog:",
+    "firebase-admin": "catalog:",
+    "monaco-editor": "catalog:",
+    "monaco-yaml": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "tsdown": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
+  }
+}

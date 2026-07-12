@@ -1,0 +1,27 @@
+{
+  "name": "@scanveil/worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.mjs",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "catalog:",
+    "@scanveil/core": "workspace:*",
+    "@scanveil/github": "workspace:*",
+    "@scanveil/rag": "workspace:*",
+    "@scanveil/scanners": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tsdown": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

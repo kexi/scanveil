@@ -1,0 +1,8 @@
+title = "Scanveil gitleaks config"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Documentation placeholders"
+regexes = ['''GITHUB_APP_PRIVATE_KEY=''', '''GITHUB_WEBHOOK_SECRET=''']

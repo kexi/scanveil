@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://www.scanveil.kexi.dev/schema/scanveil.config.schema.json
+version: 1
+checks:
+  conclusionMode: advisory
+  failThreshold:
+    osv: critical
+    llm: critical
+scan:
+  llm:
+    enabled: true
+    scope: pr_diff
+    excludePaths:
+      - "dist/**"
+      - "vendor/**"
+      - "node_modules/**"
+    agent:
+      runner: antigravity_experimental
+      timeoutSeconds: 900
+      skills:
+        enabled: true
+      plugins:
+        enabled: false
+      mcp:
+        enabled: false
+  osv:
+    enabled: true
+    scope: changed_lockfiles
+    lockfileGlobs:
+      - "**/pnpm-lock.yaml"
+      - "**/package-lock.json"
+      - "**/yarn.lock"
+      - "**/bun.lock"
+      - "**/Cargo.lock"
+      - "**/go.sum"
+      - "**/requirements*.txt"
+      - "**/poetry.lock"
+      - "**/Pipfile.lock"
+      - "**/composer.lock"
+suppression:
+  enabled: true
+  similarityThreshold: 0.88
+  maxNearestNeighbors: 10
+schedule:
+  enabled: true

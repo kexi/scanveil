@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "declarationMap": true,
+    "exactOptionalPropertyTypes": true,
+    "ignoreDeprecations": "6.0",
+    "isolatedModules": true,
+    "lib": ["ES2024"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noUncheckedIndexedAccess": true,
+    "outDir": "dist",
+    "paths": {
+      "@scanveil/auth": ["packages/auth/src/index.ts"],
+      "@scanveil/core": ["packages/core/src/index.ts"],
+      "@scanveil/github": ["packages/github/src/index.ts"],
+      "@scanveil/rag": ["packages/rag/src/index.ts"],
+      "@scanveil/scanners": ["packages/scanners/src/index.ts"]
+    },
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2024",
+    "types": ["node"]
+  }
+}

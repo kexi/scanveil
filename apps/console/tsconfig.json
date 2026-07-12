@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ES2024", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "types": ["node", "react", "react-dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@scanveil/auth": ["../../packages/auth/src/index.ts"],
+      "@scanveil/core": ["../../packages/core/src/index.ts"],
+      "@scanveil/github": ["../../packages/github/src/index.ts"]
+    }
+  }
+}

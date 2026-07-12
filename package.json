@@ -1,0 +1,37 @@
+{
+  "name": "scanveil",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev:api": "pnpm --filter @scanveil/api dev",
+    "dev:console": "pnpm --filter @scanveil/console dev",
+    "dev:docs": "pnpm --filter @scanveil/docs dev",
+    "dev:web": "pnpm dev:console",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "lint": "oxlint .",
+    "supply-chain:gitleaks": "gitleaks detect --source .",
+    "supply-chain:osv": "osv-scanner scan --format json pnpm-lock.yaml",
+    "supply-chain:pinact": "pinact run -check -verify-comment -verify-min-age -min-age 1",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "@playwright/test": "catalog:",
+    "@types/node": "24.13.2",
+    "firebase-tools": "catalog:",
+    "tsdown": "0.22.3",
+    "tsx": "4.22.4",
+    "typescript": "6.0.3",
+    "vitest": "4.1.9"
+  },
+  "engines": {
+    "node": ">=22.0.0 <25",
+    "pnpm": ">=11.8.0"
+  },
+  "packageManager": "pnpm@11.8.0"
+}
