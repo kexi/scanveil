@@ -16,7 +16,7 @@
     "lint": "oxlint .",
     "supply-chain:gitleaks": "gitleaks detect --source .",
     "supply-chain:osv": "osv-scanner scan --format json pnpm-lock.yaml",
-    "supply-chain:pinact": "pinact run -check -verify-comment -verify-min-age -min-age 1",
+    "supply-chain:pinact": "pinact run --check --verify-comment --verify-min-age --min-age 1",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck"
   },
@@ -27,7 +27,7 @@
     "tsdown": "0.22.3",
     "tsx": "4.22.4",
     "typescript": "6.0.3",
-    "vitest": "4.1.9"
+    "vitest": "4.1.12"
   },
   "engines": {
     "node": ">=22.0.0 <25",

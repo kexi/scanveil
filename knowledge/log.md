@@ -9,6 +9,11 @@ timestamp: 2026-06-20T14:46:50Z
 
 # Scanveil knowledge log
 
+## 2026-10-26
+
+- Updated the Nix flake inputs; nixpkgs now ships pinact v5, which only accepts long flags with two dashes, so `supply-chain:pinact` uses `--check --verify-comment --verify-min-age --min-age 1`.
+- Cleared the OSV Scanner CI gate by bumping catalog packages (firebase-tools 15.34.1, firebase 12.19.0, firebase-functions 7.4.0, @google/genai 2.31.0, vite 8.3.5, vitest 4.1.12, zod 4.6.7, dompurify override 3.4.17), refreshing vulnerable transitive packages with `pnpm update -r`, and overriding `@grpc/grpc-js` to 1.14.6 because `@firebase/firestore` pins `~1.9.0` with no patched 1.9.x release. Verified with local `osv-scanner scan pnpm-lock.yaml` (exit 0) plus format, lint, typecheck, test, build, e2e, terraform-check, gitleaks, and pinact.
+
 ## 2026-07-12
 
 - Deployed `main` at `7567d06` to Firebase (docs, admin, functions), `scanveil-web` (revision 00062), and `scanveil-worker` (generation 38); details in `knowledge/work/2026-07-12-full-deploy-7567d06.md`.
