@@ -16,7 +16,7 @@
     "lint": "oxlint .",
     "supply-chain:gitleaks": "gitleaks detect --source .",
     "supply-chain:osv": "osv-scanner scan --format json pnpm-lock.yaml",
-    "supply-chain:pinact": "pinact run -check -verify-comment -verify-min-age -min-age 1",
+    "supply-chain:pinact": "pinact run --check --verify-comment --verify-min-age --min-age 1",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck"
   },
