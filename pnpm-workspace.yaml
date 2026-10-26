@@ -10,7 +10,7 @@ blockExoticSubdeps: true
 
 catalog:
   "@google-cloud/firestore": "7.11.6"
-  "@google/genai": "2.8.0"
+  "@google/genai": "2.31.0"
   "@emotion/react": "11.14.0"
   "@emotion/styled": "11.14.1"
   "@mui/icons-material": "9.1.1"
@@ -20,9 +20,9 @@ catalog:
   "@vitejs/plugin-react": "6.0.2"
   "@monaco-editor/react": "4.7.0"
   "firebase-admin": "13.10.0"
-  "firebase-functions": "7.2.5"
-  "firebase": "12.15.0"
-  "firebase-tools": "15.22.0"
+  "firebase-functions": "7.4.0"
+  "firebase": "12.19.0"
+  "firebase-tools": "15.34.1"
   "monaco-editor": "0.55.1"
   "monaco-yaml": "5.5.1"
   "react": "19.2.7"
@@ -30,9 +30,9 @@ catalog:
   "yaml": "2.9.0"
   "typescript": "6.0.3"
   "tsdown": "0.22.3"
-  "vitest": "4.1.9"
-  "vite": "8.0.16"
-  "zod": "4.4.3"
+  "vitest": "4.1.12"
+  "vite": "8.3.5"
+  "zod": "4.6.7"
   "@types/node": "24.13.2"
   "@types/react": "19.2.17"
   "@types/react-dom": "19.2.3"
@@ -41,8 +41,14 @@ catalog:
 
 overrides:
   "@opentelemetry/core": "2.8.0"
-  dompurify: "3.4.11"
+  dompurify: "3.4.17"
   esbuild: "0.28.1"
+  # @firebase/firestore (via firebase) pins @grpc/grpc-js ~1.9.0, and no 1.9.x
+  # release fixes GHSA-f596-whhp-79r4 / GHSA-m9gg-hp2v-232j, so force the
+  # patched 1.14 line for every dependent.
+  # Why not ignore the advisories in an osv-scanner config: the OSV gate would
+  # stop reporting this package, and the 1.14 line keeps the same public API.
+  "@grpc/grpc-js": "1.14.6"
   uuid: "11.1.1"
   yaml: "2.9.0"
 
